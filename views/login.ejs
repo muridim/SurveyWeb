@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="navbar d-flex">
+        <div class="logo">
+            <h1 class="heading">Survey Site</h1>
+        </div>
+        <div class="nav-links">
+            <a href="/surveys">Surveys</a>
+            <a href="/surveys/new">New Survey</a>
+        </div>
+        <div class="end-nav-links d-flex">
+            <% if (req.session?.user) { %>
+                <a href="/account/logout">Sign out</a>
+            <% } else { %>
+                <a href="/account/login">Sign in</a>
+            <% } %>
+
+        </div>
+
+    </div>
+    <!-- 
+        For each question, use a unique html input type. Add new questions as required.
+    -->
+    <div class="main">
+        <a href="<%= config.google.getAuthUrl %>">Sign in with google</a>
+            <br>
+            <hr>
+        <form action="/account/login" method="post">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="email">Username</label>
+                <input type="username" name="username" id="username" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter your password">
+            </div>
+            <button type="submit">Sign in</button>
+        </form>
+        
+    </div>
+</body>
+
+</html>

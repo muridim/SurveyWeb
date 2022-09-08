@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="navbar d-flex">
+        <div class="logo">
+            <h1 class="heading">Survey Site</h1>
+        </div>
+        <div class="nav-links">
+            <a href="/surveys">Surveys</a>
+            <a href="/surveys/new">New Survey</a>
+        </div>
+        <div class="end-nav-links d-flex">
+            <% if (req.session?.user) { %>
+                <a href="/logout">Sign out</a>
+                <% } else { %>
+                    <a href="/login">Sign in</a>
+                    <% } %>
+        </div>
+
+    </div>
+    <!-- 
+        For each question, use a unique html input type. Add new questions as required.
+    -->
+    <div class="main">
+        <form action="/survey/submit">
+            <div class="questions">
+                <div class="question">
+                    <h2>Question 1</h2>
+                    <p>Description</p>
+                    <input type="text" name="question1" id="question1">
+                </div>
+                <div class="question">
+                    <h2>Question 2</h2>
+                    <p>Description</p>
+                    <input type="radio" name="radio">
+                </div>
+                <div class="question">
+                    <h2>Question 3</h2>
+                    <p>Description</p>
+                    <input type="button" value="True">
+                    <input type="button" value="False">
+                </div>
+                <div class="question">
+                    <h2>Question 4</h2>
+                    <p>Description</p>
+                    <input type="checkbox" name="checkbox">
+                </div>
+                <div class="question">
+                    <h2>Question 4</h2>
+                    <p>Description</p>
+                    <input type="date" name="date">
+                </div>
+        </form>
+    </div>
+</body>
+
+</html>
